@@ -42,6 +42,7 @@ body{
     top: 410px;
     left: 410px;
     z-index: 5;
+    transform: scale(0.6);
 }
 
 //placement monde
@@ -71,7 +72,7 @@ body{
   transition: all 0.2s ease-in-out;
 }
 #map{
-  margin-right: 3vw;
+  // margin-right: 3vw;
   margin-bottom: 5vh;
   &:hover{
     cursor: crosshair;

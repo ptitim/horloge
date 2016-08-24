@@ -13,6 +13,8 @@ var seconde;
 var minute;
 var heure;
 
+var minuteZero;
+var hourZero;
 
 var ro = 0;
 var ex;//milieux de la mapMonde
@@ -21,8 +23,12 @@ var mouseX = 0;//valeur x de la position de la souris sur la mapMonde
 var facteur;//facteur servant a la conversion distance sur mapMonde en minute
 
 function init(){
+  var minimum = new Date;
   var dat  = new Date();
   //recuperation des valeur numerique de l'heure
+  hourZero = minimum.getUTCHours();
+  minuteZero = minimum.getUTCMinutes();
+  hourZero-= 12;
   seconde = dat.getSeconds();
   minute = dat.getMinutes();
   heure = dat.getHours();
@@ -49,14 +55,17 @@ function init(){
 function seconde(){
   var dat = new Date();
   seconde++;
+  // console.log(seconde);
   rotationne(sec,seconde,RATIOS);
   sec.style.transition = "all 0.5s linear";
 
   if(seconde == 60){
-    sec.style.transition = "all 0s linear";
+    // console.log(seconde);
     seconde = 0;
+    sec.style.transition = "all 0s linear";
     rotationne(sec, seconde,RATIOS);
     minute++;
+    minuteZero++;
 
     if(minute == 60){
       minute = 0;
@@ -84,43 +93,25 @@ function setPosition(reset){
     e.style.left = reset;
   }else{
     e.style.left = (mouseX-14).toString()+"px";
-    facteur = 1440/finMap;
-    var envoie = mouseX * facteur - (Math.abs(ex-ro)+720);
-    console.log("mouseX ", mouseX)
-    envoie = Math.ceil(envoie);
+    // facteur = 1440/finMap;
+    // var envoie = mouseX * facteur - (Math.abs(ex-ro)+720);
+    // console.log("mouseX ", mouseX)
+    // envoie = Math.ceil(envoie);
+    var envoie = mouseX;
+    console.log(mouseX);
     heureMonde(envoie);
   }
 }
 
 function heureMonde(minu){
-  if(minu > 0){
-    for (var i = minute; i < minu ; i++) {
-      minute++;
-      // console.log("minute ",minute);
-      if(minute == 60){
-        minute = 0;
-        heure++;
-        // console.log('heure ',heure);
-        // rotationne(heur, heure, RATIOH);
-        if(heure ==23)
-        heure = 0;
-      }
-      // console.log("bonjour+");
-      // rotationne(min,minute,RATIOS);
-    }
-  }
-  else if (minu < 0) {
-    for (var i = minu; i < 0; i++) {
-      minute--;
-      if(minute == 0){
-        minute = 60;
-        heure--;
-        if(heure == 0 )
-        heure = 23;
-      }
-      // console.log("bonjour-");
-    }
-  }
+  var tmp = finMap/24;
+  var heure = hourZero + minu * tmp;
+  // heure = heure + hour*60*tmp;
+  var a = minu/finMap;
+  var b = a*24;
+  var c = hourZero + b;
+  heure = Math.ceil(c)+1;
+
   var ligne = document.getElementById('pointer');
   ex = ligne.offsetLeft;
   console.log("minute ",minute,",heure ",heure);
