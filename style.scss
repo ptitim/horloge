@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horloge{
+  transform-origin: 5vw 10vh;
+  transform: scale(.6);
+}
+
+//placement des aiguilles et de la baguette
+
+#heure{
+    position: absolute;
+    top: 355px;
+    left: 462px;
+    z-index: 3;
+    transition: all 0.5s ease-in-out;
+}
+#minute{
+    position: absolute;
+    top: 244px;
+    left: 462px;
+    z-index: 2;
+    transition: all 0.5s ease-in-out;
+}
+#seconde{
+    position: absolute;
+    top: 116px;
+    left: 467px;
+    z-index: 4;
+    transition: all 0.5s ease-in-out;
+}
+
+#baguette{
+    position: absolute;
+    top: 410px;
+    left: 410px;
+    z-index: 5;
+}
+
+//placement monde
+.mapMonde{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  span{
+      position: absolute;
+  }
+  #origin{
+      top: 0;
+      left: 0;
+  }
+  #fin{
+      top: 0;
+      left: 100%;
+  }
+}
+
+//placement aiguille
+#pointer{
+  position: absolute;
+  pointer-events: none;
+  left: 43%;
+  top: -40px;
+  transition: all 0.2s ease-in-out;
+}
+#map{
+  margin-right: 3vw;
+  margin-bottom: 5vh;
+  &:hover{
+    cursor: crosshair;
+  }
+}
+
+input{
+    background-image: url("data/reload.png");
+    background-size: contain;
+    border: none;
+    outline: none;
+    width: 80px;
+    height: 80px;
+    transition: all .5s linear;
+    &:hover{
+      transform: rotate(-360deg);
+    }
+}
+
+
+
+.container{
+  background: rgb(214,214,214); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgb(214,214,214) 0%, rgb(255,255,255) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgb(214,214,214) 0%,rgb(255,255,255) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgb(214,214,214) 0%,rgb(255,255,255) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}

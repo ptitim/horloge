@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Horloge</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body onload="init()">
+
+    <div class="container">
+        <div class="horloge">
+          <img src="data/body.png" alt="corp de l'horloge" id="horloge-body"/>
+          <div class="aiguille">
+              <img src="data/HOUR_hand.png" alt="aiguille heure" id="heure"/>
+              <img src="data/MINUTE_hand.png" alt="aiguille minute" id="minute"/>
+              <img src="data/SECONDS_hand.png" alt="aiguille seconde" id="seconde"/>
+              <img src="data/baguette.png" alt="une baguette" id="baguette"/>
+          </div>
+          <input type="button" name="name" value="" onclick="init()">
+        </div>
+        <div class="mapMonde">
+          <img src="data/timezone.png" alt="map monde" id="map" onclick="setPosition()"/>
+          <img src="data/arrowtimezone.png" alt="pointer" id="pointer"/>
+          <span id="origin"></span>
+          <span id="fin"></span>
+        </div>
+    </div>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

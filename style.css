@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  height: 100vh;
+  overflow: hidden; }
+
+.horloge {
+  transform-origin: 5vw 10vh;
+  transform: scale(0.6); }
+
+#heure {
+  position: absolute;
+  top: 355px;
+  left: 462px;
+  z-index: 3;
+  transition: all 0.5s ease-in-out; }
+
+#minute {
+  position: absolute;
+  top: 244px;
+  left: 462px;
+  z-index: 2;
+  transition: all 0.5s ease-in-out; }
+
+#seconde {
+  position: absolute;
+  top: 116px;
+  left: 467px;
+  z-index: 4;
+  transition: all 0.5s ease-in-out; }
+
+#baguette {
+  position: absolute;
+  top: 410px;
+  left: 410px;
+  z-index: 5; }
+
+.mapMonde {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+  .mapMonde span {
+    position: absolute; }
+  .mapMonde #origin {
+    top: 0;
+    left: 0; }
+  .mapMonde #fin {
+    top: 0;
+    left: 100%; }
+
+#pointer {
+  position: absolute;
+  pointer-events: none;
+  left: 43%;
+  top: -40px;
+  transition: all 0.2s ease-in-out; }
+
+#map {
+  margin-right: 3vw;
+  margin-bottom: 5vh; }
+  #map:hover {
+    cursor: crosshair; }
+
+input {
+  background-image: url("data/reload.png");
+  background-size: contain;
+  border: none;
+  outline: none;
+  width: 80px;
+  height: 80px;
+  transition: all .5s linear; }
+  input:hover {
+    transform: rotate(-360deg); }
+
+.container {
+  background: #d6d6d6;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #d6d6d6 0%, white 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #d6d6d6 0%, white 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #d6d6d6 0%, white 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+
+/*# sourceMappingURL=style.css.map */
