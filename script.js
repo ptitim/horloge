@@ -1,5 +1,3 @@
-
-
 const RATIOH = 15;
 const RATIOS = 6;
 
@@ -101,41 +99,40 @@ function setPosition(reset){
 }
 
 function heureMonde(minu){
+  //mise a l'heure la position selon la position de la souris sur la map
   heure = Math.ceil(hourZero + ((minu/finMap)*24));
-
-  console.log("minute ",minute,",heure ",heure);
-  console.log("minu ",minu,",minu/60 ", minu/60);
-
   rotationne(min,minute,RATIOS);
   rotationne(heur, heure, RATIOH);
 };
 
 setInterval(seconde,1000);
 
+
+//fonciton de drag du pointer
 function test(e){
-    // var element = document.getElementById('pointer');
     console.log("click");
     e.addEventListener("mousemove",truc);
-    document.addEventListener("onmouseup",testno);
+    window.addEventListener("mouseup",testno);
+    // window.addEventListener("mouseup",setPosition);
 };
 
-
 function testno(){
-  console.log("declick");
+    console.log("declick");
     var e = document.getElementById('pointer');
     e.removeEventListener("mousemove",truc);
 };
 
 function truc(event){
-    var e = document.getElementById('pointer');
-    var placement = event.clientX/finMap;
-    placement*=100;
-    e.style.left = placement.toString()+"%";
+    var e = document.getElementById('pointer').parentElement;
+    var placement = event.clientX;///finMap;
+    console.log(placement);
+    // e.style.left = placement.toString()+"%";
 };
 
+//deplacement du pointer(et de l'heure) avec le clavier
 function deplacement(event){
     var keycode= event.keyCode;
-    console.log(keycode);
+    console.log(event);
     var selecteur = document.getElementById('pointer');
     var pointerPos = selecteur.style.left;
     pointerPos = pointerPos.replace(/[%]$/,"");
@@ -148,6 +145,9 @@ function deplacement(event){
         pointerPos--;
         console.log(pointerPos+" gauche");
         selecteur.style.left = pointerPos+"%";
+    }else if (event.key == 'r') {
+        init();
+        return;
     }
     heure = Math.ceil(hourZero + ((pointerPos/100)*24));
     rotationne(heur,heure,RATIOH);
