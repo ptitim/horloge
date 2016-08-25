@@ -21,6 +21,7 @@ var ex;//milieux de la mapMonde
 var finMap;//taille en px de la mapMonde
 var mouseX = 0;//valeur x de la position de la souris sur la mapMonde
 var facteur;//facteur servant a la conversion distance sur mapMonde en minute
+var largeur;//largeur du body
 
 function init(){
   var minimum = new Date;
@@ -28,7 +29,7 @@ function init(){
   //recuperation des valeur numerique de l'heure
   hourZero = minimum.getUTCHours();
   minuteZero = minimum.getUTCMinutes();
-  hourZero-= 12;
+  hourZero-= 10;
   seconde = dat.getSeconds();
   minute = dat.getMinutes();
   heure = dat.getHours();
@@ -43,13 +44,15 @@ function init(){
 
   var ligne = document.getElementById('pointer');
   var fin = document.getElementById('fin');
+  var largeur = document.body.clientWidth;
   finMap = fin.offsetLeft;
-  setPosition("43%");
+  setPosition("45%");
   ex = ligne.offsetLeft;
   ro = ex;
 
   var e = document.getElementById('map');
   e.parentElement.addEventListener("mousemove",bouger);
+  window.addEventListener("keypress",deplacement);
 }
 
 function seconde(){
@@ -93,31 +96,59 @@ function setPosition(reset){
     e.style.left = reset;
   }else{
     e.style.left = (mouseX-14).toString()+"px";
-    // facteur = 1440/finMap;
-    // var envoie = mouseX * facteur - (Math.abs(ex-ro)+720);
-    // console.log("mouseX ", mouseX)
-    // envoie = Math.ceil(envoie);
-    var envoie = mouseX;
-    console.log(mouseX);
-    heureMonde(envoie);
+    heureMonde(mouseX);
   }
 }
 
 function heureMonde(minu){
-  var tmp = finMap/24;
-  var heure = hourZero + minu * tmp;
-  // heure = heure + hour*60*tmp;
-  var a = minu/finMap;
-  var b = a*24;
-  var c = hourZero + b;
-  heure = Math.ceil(c)+1;
+  heure = Math.ceil(hourZero + ((minu/finMap)*24));
 
-  var ligne = document.getElementById('pointer');
-  ex = ligne.offsetLeft;
   console.log("minute ",minute,",heure ",heure);
   console.log("minu ",minu,",minu/60 ", minu/60);
+
   rotationne(min,minute,RATIOS);
   rotationne(heur, heure, RATIOH);
-}
+};
 
 setInterval(seconde,1000);
+
+function test(e){
+    // var element = document.getElementById('pointer');
+    console.log("click");
+    e.addEventListener("mousemove",truc);
+    document.addEventListener("onmouseup",testno);
+};
+
+
+function testno(){
+  console.log("declick");
+    var e = document.getElementById('pointer');
+    e.removeEventListener("mousemove",truc);
+};
+
+function truc(event){
+    var e = document.getElementById('pointer');
+    var placement = event.clientX/finMap;
+    placement*=100;
+    e.style.left = placement.toString()+"%";
+};
+
+function deplacement(event){
+    var keycode= event.keyCode;
+    console.log(keycode);
+    var selecteur = document.getElementById('pointer');
+    var pointerPos = selecteur.style.left;
+    pointerPos = pointerPos.replace(/[%]$/,"");
+    console.log(pointerPos);
+    if(keycode == 39 && pointerPos < 95){
+        pointerPos++;
+        console.log(pointerPos+" droite");
+        selecteur.style.left = pointerPos+"%";
+    }else if (keycode == 37 && pointerPos >0) {
+        pointerPos--;
+        console.log(pointerPos+" gauche");
+        selecteur.style.left = pointerPos+"%";
+    }
+    heure = Math.ceil(hourZero + ((pointerPos/100)*24));
+    rotationne(heur,heure,RATIOH);
+}

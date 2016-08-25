@@ -14,10 +14,9 @@ body{
 }
 
 //placement des aiguilles et de la baguette
-
 #heure{
     position: absolute;
-    top: 355px;
+    top: 342px;
     left: 462px;
     z-index: 3;
     transition: all 0.5s ease-in-out;
@@ -39,8 +38,8 @@ body{
 
 #baguette{
     position: absolute;
-    top: 410px;
-    left: 410px;
+    top: 400px;
+    left: 400px;
     z-index: 5;
     transform: scale(0.6);
 }
@@ -66,7 +65,7 @@ body{
 //placement aiguille
 #pointer{
   position: absolute;
-  pointer-events: none;
+  cursor: grabbing;
   left: 43%;
   top: -40px;
   transition: all 0.2s ease-in-out;
