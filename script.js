@@ -53,20 +53,23 @@ function init(){
   window.addEventListener("keypress",deplacement);
 }
 
-function seconde(){
-  var dat = new Date();
+function secondes(){
   seconde++;
-  // console.log(seconde);
+  console.log(seconde);
   rotationne(sec,seconde,RATIOS);
-  sec.style.transition = "all 0.5s linear";
 
-  if(seconde == 60){
-    // console.log(seconde);
-    seconde = 0;
-    sec.style.transition = "all 0s linear";
+  if(seconde >59){
+    // rotationne(sec,seconde,RATIOS);
+    // seconde++;
+    console.log("rotate");
     rotationne(sec, seconde,RATIOS);
+    setTimeout(function(){sec.style.transition = "all 0s linear"},100);
+    console.log(seconde);
+    seconde = 0;
+    setTimeout(function(){rotationne(sec, seconde,RATIOS)},450);
     minute++;
     minuteZero++;
+    setTimeout(function(){sec.style.transition = "all 0.5s linear"},500);
 
     if(minute == 60){
       minute = 0;
@@ -105,7 +108,6 @@ function heureMonde(minu){
   rotationne(heur, heure, RATIOH);
 };
 
-setInterval(seconde,1000);
 
 
 //fonciton de drag du pointer
@@ -152,3 +154,8 @@ function deplacement(event){
     heure = Math.ceil(hourZero + ((pointerPos/100)*24));
     rotationne(heur,heure,RATIOH);
 }
+
+
+
+
+setInterval(secondes,1000);
