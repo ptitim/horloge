@@ -3,6 +3,33 @@
     padding: 0;
 }
 
+@media screen and (min-width: 900px) and (max-width: 1600px) {
+    .horloge{
+      transform: scale(.6);
+    }
+    .mapMonde{
+      bottom: 0;
+    }
+
+}
+
+//ecran plus petit que 800 px
+@media (max-width:800px) and (min-width:400px) {
+  .horloge{
+    transform: scale(.6);
+  }
+  //placement monde
+  .mapMonde{
+    top: 100vh;
+  }
+}
+
+@media (max-width:400px) {
+  .horloge{
+    transform: scale(.2);
+  }
+}
+
 body{
   height: 100vh;
   // overflow: hidden;
@@ -10,8 +37,8 @@ body{
 
 .horloge{
   transform-origin: 5vw 10vh;
-  transform: scale(.6);
 }
+
 
 //placement des aiguilles et de la baguette
 #heure{
@@ -32,7 +59,7 @@ body{
     position: absolute;
     top: 116px;
     left: 467px;
-    z-index: 1;
+    z-index: 4;
     transition: all 0.5s ease-in-out;
 }
 
@@ -41,15 +68,13 @@ body{
     top: 400px;
     left: 400px;
     z-index: 5;
-    transform: scale(0.6);
+    transform: scale(0.5);
 }
 
 //placement monde
 .mapMonde{
   position: absolute;
-  bottom: 0;
   right: 0;
-  margin-top: 0px;
   span{
       position: absolute;
   }
@@ -91,8 +116,6 @@ input{
       transform: rotate(-360deg);
     }
 }
-
-
 
 .container{
   background: rgb(214,214,214); /* Old browsers */

@@ -2,12 +2,26 @@
   margin: 0;
   padding: 0; }
 
+@media screen and (min-width: 900px) and (max-width: 1600px) {
+  .horloge {
+    transform: scale(0.6); }
+
+  .mapMonde {
+    bottom: 0; } }
+@media (max-width: 800px) and (min-width: 400px) {
+  .horloge {
+    transform: scale(0.6); }
+
+  .mapMonde {
+    top: 100vh; } }
+@media (max-width: 400px) {
+  .horloge {
+    transform: scale(0.2); } }
 body {
   height: 100vh; }
 
 .horloge {
-  transform-origin: 5vw 10vh;
-  transform: scale(0.6); }
+  transform-origin: 5vw 10vh; }
 
 #heure {
   position: absolute;
@@ -27,7 +41,7 @@ body {
   position: absolute;
   top: 116px;
   left: 467px;
-  z-index: 1;
+  z-index: 4;
   transition: all 0.5s ease-in-out; }
 
 #baguette {
@@ -35,13 +49,11 @@ body {
   top: 400px;
   left: 400px;
   z-index: 5;
-  transform: scale(0.6); }
+  transform: scale(0.5); }
 
 .mapMonde {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  margin-top: 0px; }
+  right: 0; }
   .mapMonde span {
     position: absolute; }
   .mapMonde #origin {

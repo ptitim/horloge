@@ -38,7 +38,8 @@ function init(){
   heur = document.getElementById('heure');
 
   rotationne(sec,seconde,RATIOS);
-  rotationne(min,minute,RATIOS); rotationne(heur, heure, RATIOH);
+  rotationne(min,minute
+  ,RATIOS); rotationne(heur, heure, RATIOH);
 
   var ligne = document.getElementById('pointer');
   var fin = document.getElementById('fin');
@@ -69,7 +70,7 @@ function secondes(){
     setTimeout(function(){rotationne(sec, seconde,RATIOS)},450);
     minute++;
     minuteZero++;
-    setTimeout(function(){sec.style.transition = "all 0.5s linear"},500);
+    setTimeout(function(){sec.style.transition = "all 0.5s linear"},700);
 
     if(minute == 60){
       minute = 0;
@@ -154,8 +155,5 @@ function deplacement(event){
     heure = Math.ceil(hourZero + ((pointerPos/100)*24));
     rotationne(heur,heure,RATIOH);
 }
-
-
-
 
 setInterval(secondes,1000);
