@@ -3,25 +3,37 @@
   padding: 0; }
 
 @media screen and (min-width: 900px) and (max-width: 1600px) {
+  body {
+    overflow: hidden; }
+
   .horloge {
     transform: scale(0.6); }
 
   .mapMonde {
+    margin-right: 2vw;
     bottom: 0; } }
 @media (max-width: 800px) and (min-width: 400px) {
   .horloge {
     transform: scale(0.6); }
 
   .mapMonde {
-    top: 100vh; } }
-@media (max-width: 400px) {
-  .horloge {
-    transform: scale(0.2); } }
+    top: 90vh; } }
 body {
-  height: 100vh; }
+  height: 100vh;
+  width: 100vw;
+  background: #d6d6d6;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #d6d6d6 0%, white 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #d6d6d6 0%, white 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #d6d6d6 0%, white 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 
 .horloge {
-  transform-origin: 5vw 10vh; }
+  transform-origin: 5vw 1vh;
+  position: absolute;
+  top: 0; }
 
 #heure {
   position: absolute;
@@ -53,7 +65,8 @@ body {
 
 .mapMonde {
   position: absolute;
-  right: 0; }
+  right: 0;
+  margin-top: 40vh; }
   .mapMonde span {
     position: absolute; }
   .mapMonde #origin {
@@ -76,24 +89,23 @@ body {
     cursor: crosshair; }
 
 input {
+  z-index: 5;
+  background: none;
   background-image: url("data/reload.png");
+  background-color: none;
   background-size: contain;
+  background-repeat: no-repeat;
   border: none;
   outline: none;
-  width: 80px;
-  height: 80px;
+  width: 5vmax;
+  height: 5vmax;
   transition: all .5s linear; }
   input:hover {
     transform: rotate(-360deg); }
 
-.container {
-  background: #d6d6d6;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #d6d6d6 0%, white 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #d6d6d6 0%, white 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #d6d6d6 0%, white 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+.calendrier {
+  position: absolute;
+  top: 2vh;
+  right: 5vw; }
 
 /*# sourceMappingURL=style.css.map */

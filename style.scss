@@ -4,10 +4,14 @@
 }
 
 @media screen and (min-width: 900px) and (max-width: 1600px) {
+    body{
+      overflow: hidden;
+    }
     .horloge{
       transform: scale(.6);
     }
     .mapMonde{
+      margin-right: 2vw;
       bottom: 0;
     }
 
@@ -20,23 +24,24 @@
   }
   //placement monde
   .mapMonde{
-    top: 100vh;
+    top: 90vh;
   }
 }
 
-@media (max-width:400px) {
-  .horloge{
-    transform: scale(.2);
-  }
-}
 
 body{
   height: 100vh;
-  // overflow: hidden;
+  width: 100vw;
+  background: rgb(214,214,214); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgb(214,214,214) 0%, rgb(255,255,255) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgb(214,214,214) 0%,rgb(255,255,255) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgb(214,214,214) 0%,rgb(255,255,255) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 .horloge{
-  transform-origin: 5vw 10vh;
+  transform-origin: 5vw 1vh;
+  position: absolute;
+  top: 0;
 }
 
 
@@ -75,6 +80,7 @@ body{
 .mapMonde{
   position: absolute;
   right: 0;
+  margin-top: 40vh;
   span{
       position: absolute;
   }
@@ -104,23 +110,26 @@ body{
   }
 }
 
+// bouton reset
 input{
+    z-index: 5;
+    background: none;
     background-image: url("data/reload.png");
+    background-color: none;
     background-size: contain;
+    background-repeat: no-repeat;
     border: none;
     outline: none;
-    width: 80px;
-    height: 80px;
+    width: 5vmax;
+    height: 5vmax;
     transition: all .5s linear;
     &:hover{
       transform: rotate(-360deg);
     }
 }
 
-.container{
-  background: rgb(214,214,214); /* Old browsers */
-  background: -moz-linear-gradient(-45deg, rgb(214,214,214) 0%, rgb(255,255,255) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, rgb(214,214,214) 0%,rgb(255,255,255) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, rgb(214,214,214) 0%,rgb(255,255,255) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+.calendrier{
+    position: absolute;
+    top: 2vh;
+    right: 5vw;
 }

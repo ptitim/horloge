@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <title>Horloge</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
   </head>
   <body onload="init()">
 
     <div class="container">
+      <input type="button" name="name" value="" onclick="init()">
         <div class="horloge">
           <img src="data/body.png" alt="corp de l'horloge" id="horloge-body"/>
           <div class="aiguille">
@@ -16,11 +18,13 @@
               <img src="data/SECONDS_hand.png" alt="aiguille seconde" id="seconde"/>
               <img src="data/baguette.png" alt="une baguette" id="baguette"/>
           </div>
-          <input type="button" name="name" value="" onclick="init()">
+        </div>
+        <div class="calendrier">
+            <p id="test"></p>
         </div>
         <div class="mapMonde">
           <img src="data/timezone.png" alt="map monde" id="map" onclick="setPosition()"/>
-          <img src="data/arrowtimezone.png" alt="pointer" id="pointer" onmousedown="test(this)" onmouseup="testno(this)"/>
+          <img src="data/arrowtimezone.png" alt="pointer" id="pointer"/>
           <span id="origin"></span>
           <span id="fin"></span>
         </div>
